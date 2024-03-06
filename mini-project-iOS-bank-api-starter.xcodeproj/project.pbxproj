@@ -18,6 +18,9 @@
 		05CF04DB2B97A1FA00672FDF /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF04DA2B97A1FA00672FDF /* TokenResponse.swift */; };
 		05CF04DF2B97A22A00672FDF /* AmountChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF04DE2B97A22A00672FDF /* AmountChange.swift */; };
 		05CF04E12B97A23C00672FDF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF04E02B97A23C00672FDF /* User.swift */; };
+
+		B5ED4D532B9847740040BF17 /* TestHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED4D522B9847740040BF17 /* TestHomeViewController.swift */; };
+		B5ED4D552B984CC90040BF17 /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ED4D542B984CC90040BF17 /* DepositViewController.swift */; };
 		4602E1DE2B984D4F003FE842 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4602E1DD2B984D4F003FE842 /* SignInViewController.swift */; };
 		4602E1E12B984D6E003FE842 /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = 4602E1E02B984D6E003FE842 /* Eureka */; };
 		4602E1E42B984D77003FE842 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4602E1E32B984D77003FE842 /* Kingfisher */; };
@@ -44,6 +47,9 @@
 		05CF04DA2B97A1FA00672FDF /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 		05CF04DE2B97A22A00672FDF /* AmountChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountChange.swift; sourceTree = "<group>"; };
 		05CF04E02B97A23C00672FDF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B5ED4D522B9847740040BF17 /* TestHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHomeViewController.swift; sourceTree = "<group>"; };
+		B5ED4D542B984CC90040BF17 /* DepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
+
 		4602E1DD2B984D4F003FE842 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		4602E1F12B985247003FE842 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4602E1F32B987714003FE842 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				4602E1EC2B984D8D003FE842 /* Alamofire in Frameworks */,
 				4602E1EE2B984D8D003FE842 /* AlamofireDynamic in Frameworks */,
 				4602E1E72B984D82003FE842 /* SnapKit in Frameworks */,
@@ -137,6 +144,9 @@
 		05CF04DD2B97A21600672FDF /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				05CF04C32B97A0AF00672FDF /* ViewController.swift */,
+				B5ED4D522B9847740040BF17 /* TestHomeViewController.swift */,
+				B5ED4D542B984CC90040BF17 /* DepositViewController.swift */,
 				05CF04C32B97A0AF00672FDF /* HomeViewController.swift */,
 				4602E1DD2B984D4F003FE842 /* SignInViewController.swift */,
 				4602E1F12B985247003FE842 /* SignUpViewController.swift */,
@@ -162,6 +172,7 @@
 			);
 			name = "mini-project-iOS-bank-api-starter";
 			packageProductDependencies = (
+
 				4602E1E02B984D6E003FE842 /* Eureka */,
 				4602E1E32B984D77003FE842 /* Kingfisher */,
 				4602E1E62B984D82003FE842 /* SnapKit */,
@@ -199,6 +210,7 @@
 			);
 			mainGroup = 05CF04B32B97A0AF00672FDF;
 			packageReferences = (
+
 				4602E1DF2B984D6E003FE842 /* XCRemoteSwiftPackageReference "Eureka" */,
 				4602E1E22B984D77003FE842 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				4602E1E52B984D82003FE842 /* XCRemoteSwiftPackageReference "SnapKit" */,
@@ -237,6 +249,10 @@
 				05CF04C02B97A0AF00672FDF /* AppDelegate.swift in Sources */,
 				4602E1F22B985247003FE842 /* SignUpViewController.swift in Sources */,
 				05CF04E12B97A23C00672FDF /* User.swift in Sources */,
+				B5ED4D532B9847740040BF17 /* TestHomeViewController.swift in Sources */,
+
+				B5ED4D552B984CC90040BF17 /* DepositViewController.swift in Sources */,
+
 				4602E1DE2B984D4F003FE842 /* SignInViewController.swift in Sources */,
 				05CF04DF2B97A22A00672FDF /* AmountChange.swift in Sources */,
 				05CF04DB2B97A1FA00672FDF /* TokenResponse.swift in Sources */,
@@ -464,6 +480,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+
 		4602E1DF2B984D6E003FE842 /* XCRemoteSwiftPackageReference "Eureka" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/xmartlabs/Eureka";
@@ -472,6 +489,7 @@
 				minimumVersion = 5.4.0;
 			};
 		};
+
 		4602E1E22B984D77003FE842 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -480,6 +498,7 @@
 				minimumVersion = 7.11.0;
 			};
 		};
+
 		4602E1E52B984D82003FE842 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -488,6 +507,7 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+
 		4602E1EA2B984D8D003FE842 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -499,6 +519,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+
 		4602E1E02B984D6E003FE842 /* Eureka */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4602E1DF2B984D6E003FE842 /* XCRemoteSwiftPackageReference "Eureka" */;

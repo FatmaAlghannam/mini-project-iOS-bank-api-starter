@@ -7,11 +7,13 @@
 
 import Foundation
 import Alamofire
+
 class NetworkManager {
     private let baseUrl = "https://coded-bank-api.eapi.joincoded.com/"
     
     static let shared = NetworkManager()
     
+
 
      func signup(user: User, completion: @escaping (Result<TokenResponse, Error>) -> Void) {
         let url = baseUrl + "signup"
@@ -24,6 +26,7 @@ class NetworkManager {
             }
         }
     }
+
     
     func signin(user: User, completion: @escaping (Result<TokenResponse, Error>) -> Void) {
        let url = baseUrl + "signin"
@@ -48,6 +51,19 @@ class NetworkManager {
             }
         }
     }
+    
+     func withdraw(token: String, amountChange: AmountChange, completion: @escaping (Result<Void, Error>) -> Void) {
+        let url = baseUrl + "withdraw"
+        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+        AF.request(url, method: .put, parameters: amountChange, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+            if let error = response.error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+
 
     
     //MARK: OTHER Networking Functions
