@@ -10,74 +10,7 @@ import Alamofire
 import Kingfisher
 import SnapKit
 import Eureka
-//
-//class SignInViewController: UIViewController {
-//    
-//    let usernameTextField: UITextField! = nil 
-//    let passwordTextField: UITextField!
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        signInButtonTapped(UIButton)
-//        
-//        view.addSubview(usernameTextField)
-//        view.addSubview(passwordTextField)
-//    }
-//    
-//        //sign-in button
-//        func signInButtonTapped(_ sender: UIButton) {
-//            guard let username = usernameTextField.text, !username.isEmpty,
-//                let password = passwordTextField.text, !password.isEmpty else {
-//                showAlert(message: "Username & password")
-//                return
-//            }
-//            
-//            let jsonData: [String: Any] = ["username": username, "password": password]
-//            
-//            guard let requestData = try? JSONSerialization.data(withJSONObject: jsonData) else {
-//                showAlert(message: "Error")
-//                return
-//            }
-//            
-//            guard let url = URL(string: "https://coded-bank-api.eapi.joincoded.com/signin") else {
-//                showAlert(message: "Invalid URL.")
-//                return
-//            }
-//            
-//            var request = URLRequest(url: url)
-//            request.httpMethod = "POST"
-//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//            request.httpBody = requestData
-//            
-//            URLSession.shared.dataTask(with: request) { data, response, error in
-//                
-//                if let error = error {
-//                    self.showAlert(message: "Error: \(error.localizedDescription)")
-//                    return
-//                }
-//                
-//                if data != nil {
-//                    
-//                }
-//            }.resume()
-//        }
-//
-//  
-//        func showAlert(message: String) {
-//            DispatchQueue.main.async {
-//                let alertController = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-//                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                self.present(alertController, animated: true, completion: nil)
-//            }
-//        }
-//    }
-//        
-//    
-//
-//
-//
-//
-//    
-//    
+
 class SignInViewController: FormViewController {
     
     var token: String?
@@ -103,7 +36,7 @@ class SignInViewController: FormViewController {
                 }
             }}
             
-            <<< TextRow{ row in
+            <<< PasswordRow{ row in
                 row.title = "Password"
                 row.placeholder = "Enter your password here"
                 row.tag = "Password"
@@ -117,7 +50,10 @@ class SignInViewController: FormViewController {
                     }
                 }
             }
-            
+//        <<< CheckRow(){ row in
+//            
+//        }
+        
             form +++ Section("")
             
             <<< ButtonRow(){ row in
@@ -138,7 +74,7 @@ class SignInViewController: FormViewController {
         }
         //getting data from the row
         let usernameRow: TextRow? = form.rowBy(tag: "UserName")
-        let passwordRow: TextRow? = form.rowBy(tag: "Password")
+        let passwordRow: PasswordRow? = form.rowBy(tag: "Password")
         
         
         //convert data to string ,INT ,etc

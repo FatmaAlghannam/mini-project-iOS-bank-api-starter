@@ -37,7 +37,7 @@ class SignUpViewController: FormViewController{
                 }
             }
         }
-        <<< TextRow{ row in
+        <<< PasswordRow{ row in
             row.title = "Password"
             row.placeholder = "Enter your password here"
             row.tag = "Password"
@@ -79,9 +79,9 @@ class SignUpViewController: FormViewController{
             return
         }
         //getting data from the row
-        let usernameRow: TextRow? = form.rowBy(tag: "username")
-        let passwordRow: TextRow? = form.rowBy(tag: "password")
-        let emailRow: EmailRow? = form.rowBy(tag: "email")
+        let usernameRow: TextRow? = form.rowBy(tag: "Username")
+        let passwordRow: PasswordRow? = form.rowBy(tag: "Password")
+        let emailRow: EmailRow? = form.rowBy(tag: "Email")
         
         
         //convert data to string ,INT ,etc
@@ -90,23 +90,25 @@ class SignUpViewController: FormViewController{
         let email = emailRow?.value ?? ""
         
         
-        print(username)
+        
         let user = User(username: username, email: email, password: password)
+        print(user)
         
         
-        
-        NetworkManager.shared.signup(user: user) { result in
-            switch result {
-            case.success(let tokenResponse):
-                print("Successful Token\(tokenResponse.token)")
-                
-                
-                
-            case.failure(let afError):
-                print(afError)
+        NetworkManager.shared.signup(user: user) { success in
+            DispatchQueue.main.async{
+                switch success {
+                case .success(let tokenResponse):
+                    let signupVC = AccountViewController()
+                    signupVC.token = tokenResponse.token
+                    self.navigationController?.pushViewController(signupVC, animated: true)
+                    print("Successful Token\(tokenResponse.token)")
+                case .failure(let afError):
+                    print(afError)
+                }
             }
+            
         }
-        
     }
     
     func presentAlertWithTitle(title: String, message: String) {
@@ -116,84 +118,3 @@ class SignUpViewController: FormViewController{
     }
     
 }
-
-
-
- 
-
-
-
-//        let usernameTextField: UITextField = {
-//            let textField = UITextField()
-//            textField.placeholder = "Username"
-//            textField.borderStyle = .roundedRect
-//            return textField
-//        }()
-//    let emailTextFeild: UITableFeild ={
-//        
-//    }
-//
-////    let EmailTextFeild:{ row in
-////                row.title = "Email"
-////                row.placeholder = "Enter your email"
-////                row.tag = "Email"
-////                row.add(rule: RuleRequired())
-////                row.validationOptions = .validatesOnChange
-////                row.cellUpdate { cell, row in
-////                    if !row.isValid{
-////                        cell.titleLabel?.textColor = .red
-////                    }
-//        let passwordTextField: UITextField = {
-//            let textField = UITextField()
-//            textField.placeholder = "Password"
-//            textField.isSecureTextEntry = true
-//            textField.borderStyle = .roundedRect
-//            return textField
-//        }()
-//
-//        let signUpButton: UIButton = {
-//            let button = UIButton(type: .system)
-//            button.setTitle("Sign Up", for: .normal)
-//            button.addTarget(SignUpViewController.self, action: #selector(signUpTapped), for: .touchUpInside)
-//            return button
-//        }()
-//
-//        override func viewDidLoad() {
-//            super.viewDidLoad()
-//            view.backgroundColor = .white
-//
-//            setupUI()
-//            setConstraints()
-//        }
-//
-//        func setupUI() {
-//            view.addSubview(usernameTextField)
-//            view.addSubview(passwordTextField)
-//            view.addSubview(signUpButton)
-//        }
-//
-//        func setConstraints() {
-//            usernameTextField.snp.makeConstraints { make in
-//                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(50)
-//                make.leading.trailing.equalToSuperview().inset(16)
-//                make.height.equalTo(40)
-//            }
-//
-//            passwordTextField.snp.makeConstraints { make in
-//                make.top.equalTo(usernameTextField.snp.bottom).offset(20)
-//                make.leading.trailing.equalToSuperview().inset(16)
-//                make.height.equalTo(40)
-//            }
-//
-//            signUpButton.snp.makeConstraints { make in
-//                make.top.equalTo(passwordTextField.snp.bottom).offset(30)
-//                make.leading.trailing.equalToSuperview().inset(16)
-//                make.height.equalTo(40)
-//            }
-//        }
-//
-//        @objc func signUpTapped() {
-//            // Implement sign-up logic here
-//            print("Sign Up tapped!")
-//        }
-//    }

@@ -1,5 +1,5 @@
 //
-//  DepositViewController.swift
+//  WithdrawViewController.swift
 //  mini-project-iOS-bank-api-starter
 //
 //  Created by Razan alshatti on 06/03/2024.
@@ -11,10 +11,10 @@ import Kingfisher
 import SnapKit
 import Alamofire
 
-class DepositViewController: FormViewController {
+class WithdrawViewController: FormViewController {
     
     weak var delegate: RefreshDelegate?
-
+    
     var token: String?
     
     let notificationLabel: UILabel = {
@@ -29,21 +29,21 @@ class DepositViewController: FormViewController {
             return label
         }()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupform()
+       
         // Do any additional setup after loading the view.
+        setupform()
     }
     
     func setupform(){
         
-        form +++ Section("Deposit")
+        form +++ Section("Withdraw")
         
         <<< DecimalRow(){ row in
-            row.title = "Deposit Amount:"
+            row.title = "Withdrawal Amount:"
             row.placeholder = "Enter Amount"
-            row.tag = "Deposit Amount:"
+            row.tag = "Withdrawal Amount:"
             //red color and error
             row.add(rule: RuleRequired())
             row.validationOptions = .validatesOnChange
@@ -57,14 +57,14 @@ class DepositViewController: FormViewController {
         form +++ Section("")
         
         <<< ButtonRow(){ row in
-            row.title = "Deposit"
+            row.title = "Withdraw"
             row.onCellSelection { cell, row in
-                self.deposit()
+                self.withdraw()
             }
         }
     }
     
-    func deposit(){
+    func withdraw(){
         
         let errors = form.validate()
         guard errors.isEmpty else{
@@ -72,34 +72,33 @@ class DepositViewController: FormViewController {
             return
         }
         //getting data from the row
-        let depositRow: DecimalRow? = form.rowBy(tag: "Deposit Amount:")
+        let withdrawRow: DecimalRow? = form.rowBy(tag: "Withdrawal Amount:")
         
         //convert data to string ,INT ,etc
-        let deposit = depositRow?.value ?? 0.0
-        var amountChange = AmountChange(amount: Double(deposit) ?? 0.0)
+        let withdraw = withdrawRow?.value ?? 0.0
+        var amountChange = AmountChange(amount: Double(withdraw) ?? 0.0)
         
-        NetworkManager.shared.deposit(token: token ?? "", amountChange: amountChange) { result in
-                switch result {
-                case .success():
-                    print("Successful Deposit")
-                    DispatchQueue.main.async {
-                        self.showNotification(message: "Deposit successful!", color: .green)
-                        
-                        // Dismiss the DepositViewController after a slight delay
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                    }
+        NetworkManager.shared.withdraw(token: token ?? "", amountChange: amountChange) { result in
+            switch result {
+            case .success():
+                print("Successful Withdraw")
+                DispatchQueue.main.async {
+                    self.showNotification(message: "Withdraw successful!", color: .green)
                     
-                case .failure(let afError):
-                    print(afError)
-                    DispatchQueue.main.async {
-                        self.showNotification(message: "Deposit failed. Please try again.", color: .red)
+                    // Dismiss the DepositViewController after a slight delay
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
+                
+            case .failure(let afError):
+                print(afError)
+                DispatchQueue.main.async {
+                    self.showNotification(message: "Withdrawal failed. Please try again.", color: .red)
+                }
             }
+        }
        }
-
     func showNotification(message: String, color: UIColor) {
         notificationLabel.text = message
         notificationLabel.backgroundColor = color
@@ -131,5 +130,3 @@ class DepositViewController: FormViewController {
     }
 
 }
-
-
